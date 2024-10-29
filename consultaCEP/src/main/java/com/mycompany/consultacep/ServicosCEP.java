@@ -15,6 +15,7 @@ import java.sql.SQLException;
  */
 public class ServicosCEP {
 
+    //ALTERAR AQUI*
     public ModeloCEP consultaPorCEP(String CEP) throws SQLException {
         ModeloCEP retorno = new ModeloCEP();
         Connection c = Conexao.obterConexao();
@@ -33,6 +34,24 @@ public class ServicosCEP {
         }
         c.close();
         return retorno;
+    }
+    
+    //ALTERAR AQUI*
+    public String Cidade(String id) throws SQLException {
+        String nome = "";
+        //ModeloCEP retorno = new ModeloCEP();
+        Connection c = Conexao.obterConexao();
+        String SQL = "SELECT * FROM CONSULTACEP.cities WHERE id = " + id;
+        PreparedStatement p = c.prepareStatement(SQL);
+        ResultSet r = p.executeQuery();
+        if (r.next()) {
+            nome = r.getString("name");
+        } else {
+            return null;
+        }
+        c.close();
+        
+        return nome;
     }
 
 }
