@@ -25,7 +25,7 @@ public class ServicosCEP {
         ResultSet r = p.executeQuery();
         if (r.next()) {
             retorno.setCity_id(r.getString("city_id"));
-            retorno.setDdd(r.getString("ddd"));
+            retorno.setestado(r.getString("ddd"));
             retorno.setEndereco(r.getString("address"));
             retorno.setId(r.getString("id"));
             retorno.setPostal_code(r.getString("postal_code"));
@@ -36,7 +36,7 @@ public class ServicosCEP {
         return retorno;
     }
     
-    //ALTERAR AQUI*
+    
     public String Cidade(String id) throws SQLException {
         String nome = "";
         //ModeloCEP retorno = new ModeloCEP();
@@ -53,5 +53,39 @@ public class ServicosCEP {
         
         return nome;
     }
+    
+    public String EstadoID(String id) throws SQLException {
+        String stateid = "";
+        //ModeloCEP retorno = new ModeloCEP();
+        Connection c = Conexao.obterConexao();
+        String SQL = "SELECT * FROM CONSULTACEP.cities WHERE id = " + id;
+        PreparedStatement p = c.prepareStatement(SQL);
+        ResultSet r = p.executeQuery();
+        if (r.next()) {
+            stateid = r.getString("state_id");
+        } else {
+            return null;
+        }
+        c.close();
+        
+        return Estado(stateid);
+    }
 
+    public String Estado(String stateid) throws SQLException {
+        String nome = "";
+        //ModeloCEP retorno = new ModeloCEP();
+        Connection c = Conexao.obterConexao();
+        String SQL = "SELECT * FROM CONSULTACEP.states WHERE id = " + stateid;
+        PreparedStatement p = c.prepareStatement(SQL);
+        ResultSet r = p.executeQuery();
+        if (r.next()) {
+            nome = r.getString("name");
+        } else {
+            return null;
+        }
+        c.close();
+        
+        return nome;
+    }
+    
 }

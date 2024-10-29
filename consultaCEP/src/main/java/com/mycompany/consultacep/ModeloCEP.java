@@ -14,7 +14,7 @@ public class ModeloCEP {
     private String city_id;
     private String endereco;
     private String postal_code;
-    private String ddd;
+    private String estado;
 
     public String getId() {
         return id;
@@ -48,17 +48,17 @@ public class ModeloCEP {
         this.postal_code = postal_code;
     }
 
-    public String getDdd() {
-        return ddd;
+    public String getestado() {
+        return estado;
     }
 
-    public void setDdd(String ddd) {
-        this.ddd = ddd;
+    public void setestado(String estado) {
+        this.estado = estado;
     }
 
     @Override
     public String toString() {
-        return "ModeloCEP{" + "id=" + id + ", city_id=" + city_id + ", endereco=" + endereco + ", postal_code=" + postal_code + ", ddd=" + ddd + "} \n";
+        return "ModeloCEP{" + "id=" + id + ", city_id=" + city_id + ", endereco=" + endereco + ", postal_code=" + postal_code + ", estado=" + estado + "} \n";
     }
 
    

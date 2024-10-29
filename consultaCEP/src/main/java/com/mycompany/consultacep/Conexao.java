@@ -15,7 +15,7 @@ import java.sql.SQLException;
 public class Conexao {
     
     public static Connection obterConexao() throws SQLException {
-        String URL = "jdbc:postgresql://10.90.54/aula";
+        String URL = "jdbc:postgresql://10.90.24.54/aula";
         String USER = "aula";
         String PASS = "aula";
         return DriverManager.getConnection(URL, USER, PASS);

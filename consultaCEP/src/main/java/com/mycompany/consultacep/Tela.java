@@ -12,14 +12,14 @@ import static java.util.logging.Level.SEVERE;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 
-public class NewJFrame extends javax.swing.JFrame {
+public class Tela extends javax.swing.JFrame {
 
     /**
      * Creates new form NewJFrame
      *
      *
      */
-    public NewJFrame() {
+    public Tela() {
         initComponents();
     }
 
@@ -56,6 +56,12 @@ public class NewJFrame extends javax.swing.JFrame {
         txtCEP.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 txtCEPActionPerformed(evt);
+            }
+        });
+
+        txtEndereco.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtEnderecoActionPerformed(evt);
             }
         });
 
@@ -125,30 +131,39 @@ public class NewJFrame extends javax.swing.JFrame {
             txtCidade.setText(s.Cidade(consulta.getCity_id()));
             
         } catch (SQLException e) {
+            
             JOptionPane.showMessageDialog(null, e.getMessage(), "erro", JOptionPane.OK_OPTION);
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, e);
         }
+        
+        
         //ALTERAR AQUI*
          try {
             ServicosCEP s = new ServicosCEP();
             ModeloCEP consulta = s.consultaPorCEP(txtCEP.getText());
-            txtCidade.setText(s.Cidade(consulta.getCity_id()));
+            txtEndereco.setText(consulta.getEndereco());
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "erro", JOptionPane.OK_OPTION);
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, e);
         }
+         
          //ALTERAR AQUI*
           try {
             ServicosCEP s = new ServicosCEP();
             ModeloCEP consulta = s.consultaPorCEP(txtCEP.getText());
-            txtCidade.setText(s.Cidade(consulta.getCity_id()));
+            txtEstado.setText(s.EstadoID(consulta.getCity_id()));
             
         } catch (SQLException e) {
             JOptionPane.showMessageDialog(null, e.getMessage(), "erro", JOptionPane.OK_OPTION);
-            Logger.getLogger(NewJFrame.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(Tela.class.getName()).log(Level.SEVERE, null, e);
         }
+        
     }//GEN-LAST:event_botaoPesquisarActionPerformed
+
+    private void txtEnderecoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtEnderecoActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtEnderecoActionPerformed
 
     /**
      * @param args the command line arguments
@@ -167,20 +182,21 @@ public class NewJFrame extends javax.swing.JFrame {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(NewJFrame.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(Tela.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new NewJFrame().setVisible(true);
+                new Tela().setVisible(true);
             }
         });
     }
